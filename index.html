@@ -36,7 +36,7 @@
 <button data-page="contactos"><i class="ico">♧</i><span>Contactos</span></button>
 <button data-page="notas"><i class="ico">✎</i><span>Notas</span></button>
 </nav>
-<div class="side-note">Central de organización para 5 personas. Los cambios se guardan automáticamente.</div>
+<div class="side-note">Central de organización para 5 gestiones independientes. Los cambios se guardan automáticamente.</div>
 </aside>
 
 <main class="main">
@@ -44,7 +44,7 @@
 
 <section class="page active" id="inicio">
 <div class="stats">
-<div class="stat"><div class="label">REUNIONES HOY</div><div class="num" id="stMeet">0</div><div class="sub">entre los personas</div></div>
+<div class="stat"><div class="label">REUNIONES HOY</div><div class="num" id="stMeet">0</div><div class="sub">todas las gestiones</div></div>
 <div class="stat"><div class="label">TAREAS ABIERTAS</div><div class="num" id="stTask">0</div><div class="sub">pendientes / en proceso</div></div>
 <div class="stat"><div class="label">SEGUIMIENTOS</div><div class="num" id="stFollow">0</div><div class="sub">por atender</div></div>
 <div class="stat"><div class="label">URGENTES</div><div class="num" id="stUrgent">0</div><div class="sub">prioridad alta</div></div>
@@ -75,19 +75,19 @@
 <!-- Activity modal -->
 <div class="overlay" id="activityModal"><div class="modal"><div class="modal-head"><h2 id="activityHeading">Nueva actividad</h2><button class="btn" onclick="closeActivity()">✕</button></div><div class="modal-body">
 <div class="form">
-<div class="field full"><label>Actividad</label><input id="aTitle" placeholder="Ej. Reunión con proveedor"></div>
-<div class="field full"><label>Persona(s) asignada(s)</label><div class="jefe-select" id="bossChips"></div></div>
+<div class="field full"><label>Actividad</label><input id="aTitle" placeholder="Ej. Reunión de monitoreo"></div>
+<div class="field full"><label>Gestión Provincial Asignada</label><div class="jefe-select" id="bossChips"></div></div>
 <div class="field"><label>Fecha</label><input id="aDate" type="date"></div><div class="field"><label>Hora</label><input id="aTime" type="time"></div>
 <div class="field"><label>Hora de finalización</label><input id="aEnd" type="time"></div><div class="field"><label>Tipo</label><select id="aType"><option>Reunión</option><option>Tarea</option><option>Seguimiento</option><option>Evento</option><option>Llamada</option></select></div>
 <div class="field"><label>Prioridad</label><select id="aPriority"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div><div class="field"><label>Estado</label><select id="aStatus"><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div>
-<div class="field"><label>Responsable / secretario</label><input id="aResp"></div><div class="field"><label>Lugar / enlace</label><input id="aPlace"></div>
-<div class="field full"><label>Descripción / instrucciones</label><textarea id="aDesc"></textarea></div><div class="field full"><label>Checklist</label><textarea id="aCheck" placeholder="Confirmar asistentes&#10;Preparar documentos&#10;Enviar resumen"></textarea></div>
+<div class="field"><label>Responsable</label><input id="aResp"></div><div class="field"><label>Lugar / enlace</label><input id="aPlace"></div>
+<div class="field full"><label>Descripción / instrucciones</label><textarea id="aDesc"></textarea></div><div class="field full"><label>Checklist</label><textarea id="aCheck" placeholder="Confirmar asistentes&#10;Preparar informes"></textarea></div>
 </div></div><div class="modal-foot"><button class="btn" onclick="closeActivity()">Cancelar</button><button class="btn primary" onclick="saveActivity()">Guardar actividad</button></div></div></div>
 
 <!-- Boss modal -->
-<div class="overlay" id="bossModal"><div class="modal"><div class="modal-head"><h2>Configurar gestión</h2><button class="btn" onclick="closeBoss()">✕</button></div><div class="modal-body"><div class="form"><div class="field"><label>Nombre</label><input id="bName"></div><div class="field"><label>Cargo</label><input id="bRole"></div><div class="field"><label>Estado actual</label><select id="bStatus"><option value="green">Disponible</option><option value="yellow">Ocupado</option><option value="red">En reunión</option><option value="blue">Fuera de oficina</option><option value="gray">No disponible</option></select></div></div></div><div class="modal-foot"><button class="btn" onclick="closeBoss()">Cancelar</button><button class="btn primary" onclick="saveBoss()">Guardar</button></div></div></div>
+<div class="overlay" id="bossModal"><div class="modal"><div class="modal-head"><h2>Configurar gestión</h2><button class="btn" onclick="closeBoss()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre de la Gestión</label><input id="bName"></div><div class="field full"><label>Responsable / Cargo</label><input id="bRole"></div><div class="field full"><label>Estado actual</label><select id="bStatus"><option value="green">Disponible</option><option value="yellow">Ocupado</option><option value="red">En reunión</option><option value="blue">Fuera de oficina</option><option value="gray">No disponible</option></select></div></div></div><div class="modal-foot"><button class="btn" onclick="closeBoss()">Cancelar</button><button class="btn primary" onclick="saveBoss()">Guardar</button></div></div></div>
 
-<div class="overlay" id="contactModal"><div class="modal"><div class="modal-head"><h2>Nuevo contacto</h2><button class="btn" onclick="closeContact()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre</label><input id="cName"></div><div class="field"><label>Cargo / empresa</label><input id="cRole"></div><div class="field"><label>Teléfono</label><input id="cPhone"></div><div class="field"><label>Correo</label><input id="cEmail"></div><div class="field"><label>Notas</label><input id="cNotes"></div></div></div><div class="modal-foot"><button class="btn" onclick="closeContact()">Cancelar</button><button class="btn primary" onclick="saveContact()">Guardar</button></div></div></div>
+<div class="overlay" id="contactModal"><div class="modal"><div class="modal-head"><h2>Nuevo contacto</h2><button class="btn" onclick="closeContact()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre</label><input id="cName"></div><div class="field"><label>Cargo / institución</label><input id="cRole"></div><div class="field"><label>Teléfono</label><input id="cPhone"></div><div class="field"><label>Correo</label><input id="cEmail"></div><div class="field full"><label>Notas</label><input id="cNotes"></div></div></div><div class="modal-foot"><button class="btn" onclick="closeContact()">Cancelar</button><button class="btn primary" onclick="saveContact()">Guardar</button></div></div></div>
 
 <div class="overlay" id="noteModal"><div class="modal"><div class="modal-head"><h2>Nueva nota</h2><button class="btn" onclick="closeNote()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Título</label><input id="nTitle"></div><div class="field full"><label>Contenido</label><textarea id="nBody" style="min-height:160px"></textarea></div></div></div><div class="modal-foot"><button class="btn" onclick="closeNote()">Cancelar</button><button class="btn primary" onclick="saveNote()">Guardar</button></div></div></div>
 
@@ -106,34 +106,46 @@ const firebaseConfig={
 firebase.initializeApp(firebaseConfig);
 const db=firebase.firestore();
 let firebaseReady=false;
+let firebaseInitPromise=null;
+let saveChain=Promise.resolve();
 let sharedListener=null;
 
-const KEY='centralEjecutiva5_v1';
-function today(){return new Date().toISOString().slice(0,10)}function addDays(d,n){let x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}
+const KEY='centralEjecutiva5_v2';
+function today(){return new Date().toISOString().slice(0,10)}
+function addDays(d,n){let x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}
+
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||{
  bosses:[
- {id:1,name:'Gestión Interna Provincial de Vigilancia Epidemiológica.',role:'',status:'green'},
- {id:2,name:'Gestión Interna Provincial de Estrategias de Prevención y Control de la Salud Pública',role:'',status:'yellow'},
- {id:3,name:'Gestión Interna Provincial de Salud Mental y Fenómeno Socioeconómico de las Drogas',role:'',status:'green'},
- {id:4,name:'Gestión Interna Provincial de Inmunizaciones',role:'',status:'red'},
- {id:5,name:'Gestión Interna Provincial de Inmunizaciones',role:'',status:'blue'}],
- activities:[
- {id:1,title:'Reunión de planificación',bosses:[1],date:today(),time:'08:30',end:'09:30',type:'Reunión',priority:'Alta',status:'Pendiente',resp:'Secretaría',place:'Sala principal',desc:'Revisar prioridades y compromisos.',check:['Preparar agenda','Confirmar asistentes']},
- {id:2,title:'Comité administrativo',bosses:[2,4],date:today(),time:'10:00',end:'11:00',type:'Reunión',priority:'Alta',status:'Pendiente',resp:'Secretaría',place:'Sala 2',desc:'Revisión de asuntos administrativos.',check:['Preparar informes','Registrar acuerdos']},
- {id:3,title:'Llamada a proveedor',bosses:[3],date:today(),time:'11:30',end:'12:00',type:'Llamada',priority:'Media',status:'Pendiente',resp:'Secretaría',place:'Teléfono',desc:'Confirmar condiciones y fechas.',check:['Registrar respuesta']},
- {id:4,title:'Revisar contrato pendiente',bosses:[5],date:addDays(today(),1),time:'09:00',end:'10:00',type:'Tarea',priority:'Alta',status:'En proceso',resp:'Secretaría',place:'Oficina',desc:'Preparar documentos para revisión.',check:['Revisar contrato','Imprimir documentos']},
- {id:5,title:'Seguimiento de propuesta',bosses:[1,3],date:addDays(today(),2),time:'14:00',end:'14:30',type:'Seguimiento',priority:'Media',status:'Pendiente',resp:'Secretaría',place:'Correo',desc:'Solicitar respuesta y actualizar al jefe.',check:['Enviar correo','Llamar si no responden']}],
- contacts:[],notes:[]
+   {id:1,name:'Gestión Interna Provincial de Vigilancia Epidemiológica',role:'',status:'green'},
+   {id:2,name:'Gestión Interna Provincial de Estrategias de Prevención y Control',role:'',status:'yellow'},
+   {id:3,name:'Gestión Interna Provincial de Salud Mental y Drogas',role:'',status:'green'},
+   {id:4,name:'Gestión Interna Provincial de Inmunizaciones - Área A',role:'',status:'red'},
+   {id:5,name:'Gestión Interna Provincial de Inmunizaciones - Área B',role:'',status:'blue'}
+ ],
+ activities:[],
+ contacts:[],
+ notes:[]
 };
+
 let selectedDate=today(),calDate=new Date(),editId=null,selectedBosses=[1],editBossId=null;
 const statusText={green:'Disponible',yellow:'Ocupado',red:'En reunión',blue:'Fuera de oficina',gray:'No disponible'};
-async function save(){
+
+function save(){
   localStorage.setItem(KEY,JSON.stringify(data));
   renderAll();
-  if(firebaseReady){
-    try{await db.collection('sharedData').doc('central').set({data:data,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});}
-    catch(e){console.error('No se pudo guardar en Firebase:',e);}
-  }
+  const payload=JSON.parse(JSON.stringify(data));
+  saveChain=saveChain.then(async()=>{
+    try{
+      if(!firebaseReady && firebaseInitPromise) await firebaseInitPromise;
+      if(!firebaseReady) throw new Error('Firebase no está disponible.');
+      await db.collection('sharedData').doc('central').set({data:payload,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+      return true;
+    }catch(e){
+      console.error('Error de sincronización:',e);
+      return false;
+    }
+  });
+  return saveChain;
 }
 
 async function initSharedData(){
@@ -155,48 +167,290 @@ async function initSharedData(){
         localStorage.setItem(KEY,JSON.stringify(data));
         renderAll();
       }
-    },err=>console.error('Error de sincronización:',err));
+    },err=>console.error('Error:',err));
   }catch(e){
-    console.error('Firebase no disponible:',e);
+    console.error('Firebase offline:',e);
   }
 }
+
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function fmt(d){return new Date(d+'T12:00:00').toLocaleDateString('es-EC',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}
 function short(d){return new Date(d+'T12:00:00').toLocaleDateString('es-EC',{day:'2-digit',month:'short'})}
 function bossNames(ids){return ids.map(id=>data.bosses.find(b=>b.id===id)?.name||'').filter(Boolean).join(', ')}
 function tag(p){return `<span class="tag ${p==='Alta'?'red':p==='Media'?'orange':'green'}">${esc(p)}</span>`}
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('pageTitle').textContent={inicio:'Gestión Provincial de Vigilancia, Prevención y Control de Salud',agenda:'Agenda general',personas:'Personas',reuniones:'Reuniones',tareas:'Tareas',seguimientos:'Seguimientos',contactos:'Contactos',notas:'Notas'}[id];renderAll()}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
+  document.getElementById('pageTitle').textContent={
+    inicio:'Gestión Provincial de Vigilancia, Prevención y Control de Salud',
+    agenda:'Agenda general',personas:'Gestiones',reuniones:'Reuniones',
+    tareas:'Tareas',seguimientos:'Seguimientos',contactos:'Contactos',notas:'Notas'
+  }[id];
+  renderAll();
+}
+
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
-function itemHTML(a){let checks=(a.check||[]).map((x,i)=>`<label style="display:block;margin-top:7px"><input type="checkbox" ${a.status==='Completada'?'checked':''} onchange="event.stopPropagation();check(${a.id},${i},this.checked)"> ${esc(x)}</label>`).join('');return `<div class="item" id="it${a.id}" onclick="toggle(${a.id})"><div class="item-head"><span class="dot"></span><div class="item-main"><div class="item-title">${esc(a.title)}</div><div class="item-meta">${esc(a.time||'—')} ${a.end?'– '+esc(a.end):''} · ${esc(a.type)} · ${esc(bossNames(a.bosses))}</div></div>${tag(a.priority)}<span class="chev">⌄</span></div><div class="item-details"><div class="details"><div class="detail"><strong>Fecha</strong>${esc(fmt(a.date))}</div><div class="detail"><strong>Estado</strong>${esc(a.status)}</div><div class="detail"><strong>Lugar</strong>${esc(a.place||'—')}</div><div class="detail"><strong>Responsable</strong>${esc(a.resp||'—')}</div></div><p>${esc(a.desc||'Sin descripción')}</p>${checks?'<strong>Checklist</strong>'+checks:''}<div style="margin-top:12px"><button class="btn" onclick="event.stopPropagation();openActivity(null,null,${a.id})">Editar</button> <button class="btn danger" onclick="event.stopPropagation();delActivity(${a.id})">Eliminar</button></div></div></div>`}
-function toggle(id){document.getElementById('it'+id)?.classList.toggle('open')}function check(id,i,v){let a=data.activities.find(x=>x.id===id);if(v&&i===a.check.length-1)a.status='Completada';save()}
-function openActivity(date=null,type=null,id=null){editId=id;if(id){let a=data.activities.find(x=>x.id===id);document.getElementById('activityHeading').textContent='Editar actividad';selectedBosses=[...a.bosses];[['aTitle',a.title],['aDate',a.date],['aTime',a.time],['aEnd',a.end],['aType',a.type],['aPriority',a.priority],['aStatus',a.status],['aResp',a.resp],['aPlace',a.place],['aDesc',a.desc],['aCheck',(a.check||[]).join('\n')]].forEach(([k,v])=>document.getElementById(k).value=v||'')}else{document.getElementById('activityHeading').textContent='Nueva actividad';selectedBosses=[1];['aTitle','aResp','aPlace','aDesc','aCheck'].forEach(k=>document.getElementById(k).value='');document.getElementById('aDate').value=date||selectedDate||today();document.getElementById('aTime').value='09:00';document.getElementById('aEnd').value='10:00';document.getElementById('aType').value=type||'Reunión';document.getElementById('aPriority').value='Media';document.getElementById('aStatus').value='Pendiente'}renderChips();document.getElementById('activityModal').style.display='flex'}
-function renderChips(){document.getElementById('bossChips').innerHTML=data.bosses.map(b=>`<button type="button" class="jefe-chip ${selectedBosses.includes(b.id)?'sel':''}" onclick="selectBoss(${b.id})">${esc(b.name)}</button>`).join('')}function selectBoss(id){selectedBosses=selectedBosses.includes(id)?selectedBosses.filter(x=>x!==id):[...selectedBosses,id];if(!selectedBosses.length)selectedBosses=[id];renderChips()}
-function closeActivity(){document.getElementById('activityModal').style.display='none'}function saveActivity(){let a={id:editId||Date.now(),title:aTitle.value.trim(),bosses:selectedBosses,date:aDate.value,time:aTime.value,end:aEnd.value,type:aType.value,priority:aPriority.value,status:aStatus.value,resp:aResp.value,place:aPlace.value,desc:aDesc.value,check:aCheck.value.split('\n').map(x=>x.trim()).filter(Boolean)};if(!a.title||!a.date){alert('Completa el título y la fecha.');return}if(editId)data.activities=data.activities.map(x=>x.id===editId?a:x);else data.activities.push(a);closeActivity();save()}
+
+function itemHTML(a){
+  let checks=(a.check||[]).map((x,i)=>`<label style="display:block;margin-top:7px"><input type="checkbox" ${a.status==='Completada'?'checked':''} onchange="event.stopPropagation();check(${a.id},${i},this.checked)"> ${esc(x)}</label>`).join('');
+  return `<div class="item" id="it${a.id}" onclick="toggle(${a.id})"><div class="item-head"><span class="dot"></span><div class="item-main"><div class="item-title">${esc(a.title)}</div><div class="item-meta">${esc(a.time||'—')} ${a.end?'– '+esc(a.end):''} · ${esc(a.type)} · <b>${esc(bossNames(a.bosses))}</b></div></div>${tag(a.priority)}<span class="chev">⌄</span></div><div class="item-details"><div class="details"><div class="detail"><strong>Fecha</strong>${esc(fmt(a.date))}</div><div class="detail"><strong>Estado</strong>${esc(a.status)}</div><div class="detail"><strong>Lugar</strong>${esc(a.place||'—')}</div><div class="detail"><strong>Responsable</strong>${esc(a.resp||'—')}</div></div><p>${esc(a.desc||'Sin descripción')}</p>${checks?'<strong>Checklist</strong>'+checks:''}<div style="margin-top:12px"><button class="btn" onclick="event.stopPropagation();openActivity(null,null,${a.id})">Editar</button> <button class="btn danger" onclick="event.stopPropagation();delActivity(${a.id})">Eliminar</button></div></div></div>`;
+}
+
+function toggle(id){document.getElementById('it'+id)?.classList.toggle('open')}
+function check(id,i,v){let a=data.activities.find(x=>x.id===id);if(v&&i===a.check.length-1)a.status='Completada';save()}
+
+function openActivity(date=null,type=null,id=null){
+  editId=id;
+  let currentFilter=document.getElementById('agendaBoss')?.value;
+  let defaultBoss = (currentFilter && currentFilter!=='Todos') ? [+currentFilter] : [data.bosses[0]?.id||1];
+
+  if(id){
+    let a=data.activities.find(x=>x.id===id);
+    document.getElementById('activityHeading').textContent='Editar actividad';
+    selectedBosses=[...a.bosses];
+    [['aTitle',a.title],['aDate',a.date],['aTime',a.time],['aEnd',a.end],['aType',a.type],['aPriority',a.priority],['aStatus',a.status],['aResp',a.resp],['aPlace',a.place],['aDesc',a.desc],['aCheck',(a.check||[]).join('\n')]].forEach(([k,v])=>document.getElementById(k).value=v||'');
+  }else{
+    document.getElementById('activityHeading').textContent='Nueva actividad';
+    selectedBosses=defaultBoss;
+    ['aTitle','aResp','aPlace','aDesc','aCheck'].forEach(k=>document.getElementById(k).value='');
+    document.getElementById('aDate').value=date||selectedDate||today();
+    document.getElementById('aTime').value='09:00';
+    document.getElementById('aEnd').value='10:00';
+    document.getElementById('aType').value=type||'Reunión';
+    document.getElementById('aPriority').value='Media';
+    document.getElementById('aStatus').value='Pendiente';
+  }
+  renderChips();
+  document.getElementById('activityModal').style.display='flex';
+}
+
+function renderChips(){
+  document.getElementById('bossChips').innerHTML=data.bosses.map(b=>`<button type="button" class="jefe-chip ${selectedBosses.includes(b.id)?'sel':''}" onclick="selectBoss(${b.id})">${esc(b.name)}</button>`).join('');
+}
+
+function selectBoss(id){
+  selectedBosses=[id]; // Exclusivo por sección para evitar cruce de tareas
+  renderChips();
+}
+
+function closeActivity(){document.getElementById('activityModal').style.display='none'}
+
+async function saveActivity(){
+  let a={
+    id:editId||Date.now(),
+    title:aTitle.value.trim(),
+    bosses:selectedBosses,
+    date:aDate.value,
+    time:aTime.value,
+    end:aEnd.value,
+    type:aType.value,
+    priority:aPriority.value,
+    status:aStatus.value,
+    resp:aResp.value,
+    place:aPlace.value,
+    desc:aDesc.value,
+    check:aCheck.value.split('\n').map(x=>x.trim()).filter(Boolean)
+  };
+  if(!a.title||!a.date){alert('Completa el título y la fecha.');return}
+  if(editId)data.activities=data.activities.map(x=>x.id===editId?a:x);
+  else data.activities.push(a);
+  closeActivity();
+  save();
+}
+
 function delActivity(id){if(confirm('¿Eliminar esta actividad?')){data.activities=data.activities.filter(x=>x.id!==id);save()}}
-function fillBossSelects(){['agendaBoss','meetingBoss','taskBoss','followBoss'].forEach(id=>{let el=document.getElementById(id);let old=el.value||'Todos';el.innerHTML='<option value="Todos">Todas las gestiones</option>'+data.bosses.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join('');el.value=old})}
-function getAutoStatus(bossId){const now=new Date(),ds=now.toISOString().slice(0,10),hm=now.toTimeString().slice(0,5);const active=data.activities.filter(a=>a.bosses.includes(bossId)&&a.date===ds&&a.time&&a.end&&a.status!=='Completada'&&a.time<=hm&&hm<a.end);if(!active.length)return {class:'green',text:'Disponible'};if(active.some(a=>a.type==='Reunión'))return {class:'red',text:'En reunión'};return {class:'yellow',text:'Ocupado'}}
-function renderBossCards(){let html=data.bosses.map((b,idx)=>{let acts=data.activities.filter(a=>a.bosses.includes(b.id)&&a.date===today());let st=getAutoStatus(b.id);return `<div class="jefe" onclick="showBoss(${b.id})"><div class="jefe-top"><div class="avatar">${esc(b.name.slice(0,1).toUpperCase())}</div><span class="status ${st.class}">${st.text}</span></div><div class="jefe-name">${esc(b.name)}</div><div class="jefe-role">${esc(b.role)}</div><div style="margin-top:10px;font-size:10px;color:var(--muted)">${acts.length} actividad(es) hoy · ${acts.filter(a=>a.priority==='Alta').length} urgente(s)</div></div>`}).join('');document.getElementById('bossCards').innerHTML=html}
-function showBoss(id){showPage('agenda');document.getElementById('agendaBoss').value=id;renderCalendar()}
-function renderTimeline(){let arr=data.activities.filter(a=>a.date===today()).sort((a,b)=>(a.time||'').localeCompare(b.time||''));document.getElementById('timeline').innerHTML=arr.length?`<div class="timeline">${arr.map(a=>`<div class="tl-row"><div class="tl-time">${esc(a.time||'')}</div><div class="tl-event ${a.priority==='Alta'?'high':''}" onclick="toggle(${a.id})"><div class="tl-title">${esc(a.title)}</div><div class="tl-meta">${esc(bossNames(a.bosses))} · ${esc(a.type)} ${a.end?'· hasta '+esc(a.end):''}</div></div></div>`).join('')}</div>`:'<div class="empty">No hay actividades hoy.</div>'}
-function renderAlerts(){let alerts=[];let urgent=data.activities.filter(a=>a.priority==='Alta'&&a.status!=='Completada'&&a.date<=addDays(today(),1));urgent.forEach(a=>alerts.push(`<div class="item"><div class="item-head"><span class="dot" style="background:var(--red)"></span><div class="item-main"><div class="item-title">Prioridad alta: ${esc(a.title)}</div><div class="item-meta">${esc(bossNames(a.bosses))} · ${esc(short(a.date))} ${esc(a.time||'')}</div></div></div></div>`));let conflicts=findConflicts();conflicts.forEach(c=>alerts.push(`<div class="item"><div class="item-head"><span class="dot" style="background:var(--yellow)"></span><div class="item-main"><div class="item-title">Posible cruce de horario</div><div class="item-meta">${esc(c.a.title)} / ${esc(c.b.title)} · ${esc(c.names)}</div></div></div></div>`));document.getElementById('alerts').innerHTML=alerts.length?alerts.slice(0,7).join(''):'<div class="empty">No hay alertas. Todo bajo control.</div>'}
-function findConflicts(){let out=[];let arr=data.activities.filter(a=>a.date===today()&&a.time&&a.end);for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){let a=arr[i],b=arr[j],shared=a.bosses.filter(x=>b.bosses.includes(x));if(shared&&shared.length&&a.time<b.end&&b.time<a.end)out.push({a,b,names:bossNames(shared)})}return out}
-function renderStats(){document.getElementById('stMeet').textContent=data.activities.filter(a=>a.date===today()&&a.type==='Reunión').length;document.getElementById('stTask').textContent=data.activities.filter(a=>a.type==='Tarea'&&a.status!=='Completada').length;document.getElementById('stFollow').textContent=data.activities.filter(a=>a.type==='Seguimiento'&&a.status!=='Completada').length;document.getElementById('stUrgent').textContent=data.activities.filter(a=>a.priority==='Alta'&&a.status!=='Completada').length;document.getElementById('stConflict').textContent=findConflicts().length}
-function renderCalendar(){let y=calDate.getFullYear(),m=calDate.getMonth();document.getElementById('calTitle').textContent=new Date(y,m,1).toLocaleDateString('es-EC',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());let filter=document.getElementById('agendaBoss').value||'Todos',first=new Date(y,m,1),start=(first.getDay()+6)%7,last=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),html='';for(let i=0;i<42;i++){let n=i-start+1,d,mute=false;if(n<1){d=new Date(y,m-1,prev+n);mute=true}else if(n>last){d=new Date(y,m+1,n-last);mute=true}else d=new Date(y,m,n);let ds=d.toISOString().slice(0,10),ev=data.activities.filter(a=>a.date===ds&&(filter==='Todos'||a.bosses.includes(+filter))).slice(0,3);html+=`<div class="day ${mute?'muted ':''}${ds===today()?'today':''}" onclick="selectDay('${ds}')"><div class="daynum">${d.getDate()}</div>${ev.map(a=>`<div class="pill ${a.priority==='Alta'?'red':a.type==='Tarea'?'green':''}">${esc(a.time||'')} ${esc(a.title)}</div>`).join('')}</div>`}document.getElementById('days').innerHTML=html;renderSelected()}
-function selectDay(d){selectedDate=d;renderSelected()}function renderSelected(){let filter=document.getElementById('agendaBoss').value||'Todos',arr=data.activities.filter(a=>a.date===selectedDate&&(filter==='Todos'||a.bosses.includes(+filter))).sort((a,b)=>(a.time||'').localeCompare(b.time||''));document.getElementById('selTitle').textContent=short(selectedDate);document.getElementById('selList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay actividades para este día.</div>'}function prevMonth(){calDate.setMonth(calDate.getMonth()-1);renderCalendar()}function nextMonth(){calDate.setMonth(calDate.getMonth()+1);renderCalendar()}function goToday(){calDate=new Date();selectedDate=today();renderCalendar()}
-function renderMeetings(q=''){q=(q||'').toLowerCase();let f=document.getElementById('meetingBoss').value||'Todos',arr=data.activities.filter(a=>a.type==='Reunión'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))).sort((a,b)=>a.date.localeCompare(b.date));document.getElementById('meetingList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay reuniones.</div>'}
-function renderTasks(q=''){q=(q||'').toLowerCase();let f=document.getElementById('taskBoss').value||'Todos',p=document.getElementById('taskPriority').value,arr=data.activities.filter(a=>a.type==='Tarea'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))&&(!p||a.priority===p)).sort((a,b)=>a.date.localeCompare(b.date));document.getElementById('taskList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay tareas.</div>'}
-function renderFollow(q=''){q=(q||'').toLowerCase();let f=document.getElementById('followBoss').value||'Todos',arr=data.activities.filter(a=>a.type==='Seguimiento'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))).sort((a,b)=>a.date.localeCompare(b.date));document.getElementById('followList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay seguimientos.</div>'}
-function renderBossManage(){document.getElementById('bossManage').innerHTML=data.bosses.map(b=>`<div class="jefe"><div class="jefe-top"><div class="avatar">${esc(b.name.slice(0,1).toUpperCase())}</div><span class="status ${b.status}">${statusText[b.status]}</span></div><div class="jefe-name">${esc(b.name)}</div><div class="jefe-role">${esc(b.role)}</div><div style="margin-top:10px"><button class="btn" onclick="openBoss(${b.id})">Editar</button></div></div>`).join('')}
-function openBoss(id=null){editBossId=id;if(id){let b=data.bosses.find(x=>x.id===id);bName.value=b.name;bRole.value=b.role;bStatus.value=b.status}else{bName.value='';bRole.value='';bStatus.value='green'}document.getElementById('bossModal').style.display='flex'}function closeBoss(){document.getElementById('bossModal').style.display='none'}function saveBoss(){if(!bName.value.trim())return alert('Escribe el nombre.');let b={id:editBossId||Date.now(),name:bName.value,role:bRole.value,status:bStatus.value};if(editBossId)data.bosses=data.bosses.map(x=>x.id===editBossId?b:x);else if(data.bosses.length<5)data.bosses.push(b);else return alert('La agenda está configurada para personas.');closeBoss();save()}
-function renderContacts(q=''){q=(q||'').toLowerCase();let arr=data.contacts.filter(c=>Object.values(c).join(' ').toLowerCase().includes(q));document.getElementById('contacts').innerHTML=arr.length?arr.map(c=>`<div class="item"><div class="item-head"><span class="dot"></span><div class="item-main"><div class="item-title">${esc(c.name)}</div><div class="item-meta">${esc(c.role)} · ${esc(c.phone)} · ${esc(c.email)}</div></div><button class="btn danger" onclick="delContact(${c.id})">Eliminar</button></div></div>`).join(''):'<div class="empty">No hay contactos.</div>'}
-function openContact(){['cName','cRole','cPhone','cEmail','cNotes'].forEach(x=>document.getElementById(x).value='');contactModal.style.display='flex'}function closeContact(){contactModal.style.display='none'}function saveContact(){if(!cName.value.trim())return alert('Escribe un nombre.');data.contacts.push({id:Date.now(),name:cName.value,role:cRole.value,phone:cPhone.value,email:cEmail.value,notes:cNotes.value});closeContact();save()}function delContact(id){if(confirm('¿Eliminar contacto?')){data.contacts=data.contacts.filter(x=>x.id!==id);save()}}
-function openNote(){nTitle.value='';nBody.value='';noteModal.style.display='flex'}function closeNote(){noteModal.style.display='none'}function saveNote(){if(!nTitle.value.trim())return alert('Escribe un título.');data.notes.unshift({id:Date.now(),title:nTitle.value,body:nBody.value});closeNote();save()}function renderNotes(){document.getElementById('notes').innerHTML=data.notes.length?data.notes.map(n=>`<div class="note card"><div class="card-body"><div style="display:flex;justify-content:space-between"><h3>${esc(n.title)}</h3><button class="btn danger" onclick="delNote(${n.id})">Eliminar</button></div><p>${esc(n.body)}</p></div></div>`).join(''):'<div class="empty">No hay notas.</div>'}function delNote(id){if(confirm('¿Eliminar nota?')){data.notes=data.notes.filter(x=>x.id!==id);save()}}
-function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='central-secretaria-5-personas.json';a.click();URL.revokeObjectURL(a.href)}
-function renderAll(){fillBossSelects();renderStats();renderBossCards();renderTimeline();renderAlerts();renderCalendar();renderBossManage();renderMeetings();renderTasks();renderFollow();renderContacts();renderNotes()}
+
+function fillBossSelects(){
+  ['agendaBoss','meetingBoss','taskBoss','followBoss'].forEach(id=>{
+    let el=document.getElementById(id);
+    let old=el.value||'Todos';
+    el.innerHTML='<option value="Todos">Todas las gestiones</option>'+data.bosses.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join('');
+    el.value=old;
+  });
+}
+
+function getAutoStatus(bossId){
+  const now=new Date(),ds=now.toISOString().slice(0,10),hm=now.toTimeString().slice(0,5);
+  const active=data.activities.filter(a=>a.bosses.includes(bossId)&&a.date===ds&&a.time&&a.end&&a.status!=='Completada'&&a.time<=hm&&hm<a.end);
+  if(!active.length)return {class:'green',text:'Disponible'};
+  if(active.some(a=>a.type==='Reunión'))return {class:'red',text:'En reunión'};
+  return {class:'yellow',text:'Ocupado'};
+}
+
+function renderBossCards(){
+  let html=data.bosses.map(b=>{
+    let acts=data.activities.filter(a=>a.bosses.includes(b.id)&&a.date===today());
+    let st=getAutoStatus(b.id);
+    return `<div class="jefe" onclick="showBoss(${b.id})"><div class="jefe-top"><div class="avatar">${esc(b.name.slice(0,1).toUpperCase())}</div><span class="status ${st.class}">${st.text}</span></div><div class="jefe-name">${esc(b.name)}</div><div class="jefe-role">${esc(b.role)}</div><div style="margin-top:10px;font-size:10px;color:var(--muted)">${acts.length} actividad(es) hoy · ${acts.filter(a=>a.priority==='Alta').length} urgente(s)</div></div>`;
+  }).join('');
+  document.getElementById('bossCards').innerHTML=html;
+}
+
+function showBoss(id){
+  showPage('agenda');
+  document.getElementById('agendaBoss').value=id;
+  renderCalendar();
+}
+
+function renderTimeline(){
+  let filter=document.getElementById('agendaBoss')?.value||'Todos';
+  let arr=data.activities.filter(a=>a.date===today()&&(filter==='Todos'||a.bosses.includes(+filter))).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+  document.getElementById('timeline').innerHTML=arr.length?`<div class="timeline">${arr.map(a=>`<div class="tl-row"><div class="tl-time">${esc(a.time||'')}</div><div class="tl-event ${a.priority==='Alta'?'high':''}" onclick="toggle(${a.id})"><div class="tl-title">${esc(a.title)}</div><div class="tl-meta">${esc(bossNames(a.bosses))} · ${esc(a.type)}</div></div></div>`).join('')}</div>`:'<div class="empty">No hay actividades hoy.</div>';
+}
+
+function renderAlerts(){
+  let alerts=[];
+  let urgent=data.activities.filter(a=>a.priority==='Alta'&&a.status!=='Completada'&&a.date<=addDays(today(),1));
+  urgent.forEach(a=>alerts.push(`<div class="item"><div class="item-head"><span class="dot" style="background:var(--red)"></span><div class="item-main"><div class="item-title">Prioridad alta: ${esc(a.title)}</div><div class="item-meta">${esc(bossNames(a.bosses))} · ${esc(short(a.date))} ${esc(a.time||'')}</div></div></div></div>`));
+  document.getElementById('alerts').innerHTML=alerts.length?alerts.slice(0,7).join(''):'<div class="empty">No hay alertas urgentes.</div>';
+}
+
+function findConflicts(){
+  let out=[];
+  let arr=data.activities.filter(a=>a.date===today()&&a.time&&a.end);
+  for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){
+    let a=arr[i],b=arr[j],shared=a.bosses.filter(x=>b.bosses.includes(x));
+    if(shared&&shared.length&&a.time<b.end&&b.time<a.end)out.push({a,b,names:bossNames(shared)});
+  }
+  return out;
+}
+
+function renderStats(){
+  document.getElementById('stMeet').textContent=data.activities.filter(a=>a.date===today()&&a.type==='Reunión').length;
+  document.getElementById('stTask').textContent=data.activities.filter(a=>a.type==='Tarea'&&a.status!=='Completada').length;
+  document.getElementById('stFollow').textContent=data.activities.filter(a=>a.type==='Seguimiento'&&a.status!=='Completada').length;
+  document.getElementById('stUrgent').textContent=data.activities.filter(a=>a.priority==='Alta'&&a.status!=='Completada').length;
+  document.getElementById('stConflict').textContent=findConflicts().length;
+}
+
+function renderCalendar(){
+  let y=calDate.getFullYear(),m=calDate.getMonth();
+  document.getElementById('calTitle').textContent=new Date(y,m,1).toLocaleDateString('es-EC',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
+  let filter=document.getElementById('agendaBoss').value||'Todos',first=new Date(y,m,1),start=(first.getDay()+6)%7,last=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),html='';
+  for(let i=0;i<42;i++){
+    let n=i-start+1,d,mute=false;
+    if(n<1){d=new Date(y,m-1,prev+n);mute=true}
+    else if(n>last){d=new Date(y,m+1,n-last);mute=true}
+    else d=new Date(y,m,n);
+    let ds=d.toISOString().slice(0,10),ev=data.activities.filter(a=>a.date===ds&&(filter==='Todos'||a.bosses.includes(+filter))).slice(0,3);
+    html+=`<div class="day ${mute?'muted ':''}${ds===today()?'today':''}" onclick="selectDay('${ds}')"><div class="daynum">${d.getDate()}</div>${ev.map(a=>`<div class="pill ${a.priority==='Alta'?'red':a.type==='Tarea'?'green':''}">${esc(a.time||'')} ${esc(a.title)}</div>`).join('')}</div>`;
+  }
+  document.getElementById('days').innerHTML=html;
+  renderSelected();
+}
+
+function selectDay(d){selectedDate=d;renderSelected()}
+
+function renderSelected(){
+  let filter=document.getElementById('agendaBoss').value||'Todos',arr=data.activities.filter(a=>a.date===selectedDate&&(filter==='Todos'||a.bosses.includes(+filter))).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+  document.getElementById('selTitle').textContent=short(selectedDate);
+  document.getElementById('selList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay actividades para esta sección hoy.</div>';
+}
+
+function prevMonth(){calDate.setMonth(calDate.getMonth()-1);renderCalendar()}
+function nextMonth(){calDate.setMonth(calDate.getMonth()+1);renderCalendar()}
+function goToday(){calDate=new Date();selectedDate=today();renderCalendar()}
+
+function renderMeetings(q=''){
+  q=(q||'').toLowerCase();
+  let f=document.getElementById('meetingBoss').value||'Todos';
+  let arr=data.activities.filter(a=>a.type==='Reunión'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))).sort((a,b)=>a.date.localeCompare(b.date));
+  document.getElementById('meetingList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay reuniones registradas.</div>';
+}
+
+function renderTasks(q=''){
+  q=(q||'').toLowerCase();
+  let f=document.getElementById('taskBoss').value||'Todos',p=document.getElementById('taskPriority').value;
+  let arr=data.activities.filter(a=>a.type==='Tarea'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))&&(!p||a.priority===p)).sort((a,b)=>a.date.localeCompare(b.date));
+  document.getElementById('taskList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay tareas registradas.</div>';
+}
+
+function renderFollow(q=''){
+  q=(q||'').toLowerCase();
+  let f=document.getElementById('followBoss').value||'Todos';
+  let arr=data.activities.filter(a=>a.type==='Seguimiento'&&(!q||a.title.toLowerCase().includes(q))&&(f==='Todos'||a.bosses.includes(+f))).sort((a,b)=>a.date.localeCompare(b.date));
+  document.getElementById('followList').innerHTML=arr.length?arr.map(itemHTML).join(''):'<div class="empty">No hay seguimientos.</div>';
+}
+
+function renderBossManage(){
+  document.getElementById('bossManage').innerHTML=data.bosses.map(b=>`<div class="jefe"><div class="jefe-top"><div class="avatar">${esc(b.name.slice(0,1).toUpperCase())}</div><span class="status ${b.status}">${statusText[b.status]}</span></div><div class="jefe-name">${esc(b.name)}</div><div class="jefe-role">${esc(b.role)}</div><div style="margin-top:10px"><button class="btn" onclick="openBoss(${b.id})">Editar</button></div></div>`).join('');
+}
+
+function openBoss(id=null){
+  editBossId=id;
+  if(id){
+    let b=data.bosses.find(x=>x.id===id);
+    bName.value=b.name;
+    bRole.value=b.role;
+    bStatus.value=b.status;
+  }else{
+    bName.value='';
+    bRole.value='';
+    bStatus.value='green';
+  }
+  document.getElementById('bossModal').style.display='flex';
+}
+
+function closeBoss(){document.getElementById('bossModal').style.display='none'}
+
+function saveBoss(){
+  if(!bName.value.trim())return alert('Escribe el nombre.');
+  let b={id:editBossId||Date.now(),name:bName.value,role:bRole.value,status:bStatus.value};
+  if(editBossId)data.bosses=data.bosses.map(x=>x.id===editBossId?b:x);
+  else if(data.bosses.length<5)data.bosses.push(b);
+  else return alert('Máximo 5 gestiones.');
+  closeBoss();
+  save();
+}
+
+function renderContacts(q=''){
+  q=(q||'').toLowerCase();
+  let arr=data.contacts.filter(c=>Object.values(c).join(' ').toLowerCase().includes(q));
+  document.getElementById('contacts').innerHTML=arr.length?arr.map(c=>`<div class="item"><div class="item-head"><span class="dot"></span><div class="item-main"><div class="item-title">${esc(c.name)}</div><div class="item-meta">${esc(c.role)} · ${esc(c.phone)} · ${esc(c.email)}</div></div><button class="btn danger" onclick="delContact(${c.id})">Eliminar</button></div></div>`).join(''):'<div class="empty">No hay contactos.</div>';
+}
+
+function openContact(){['cName','cRole','cPhone','cEmail','cNotes'].forEach(x=>document.getElementById(x).value='');contactModal.style.display='flex'}
+function closeContact(){contactModal.style.display='none'}
+function saveContact(){if(!cName.value.trim())return alert('Escribe un nombre.');data.contacts.push({id:Date.now(),name:cName.value,role:cRole.value,phone:cPhone.value,email:cEmail.value,notes:cNotes.value});closeContact();save()}
+function delContact(id){if(confirm('¿Eliminar contacto?')){data.contacts=data.contacts.filter(x=>x.id!==id);save()}}
+
+function openNote(){nTitle.value='';nBody.value='';noteModal.style.display='flex'}
+function closeNote(){noteModal.style.display='none'}
+function saveNote(){if(!nTitle.value.trim())return alert('Escribe un título.');data.notes.unshift({id:Date.now(),title:nTitle.value,body:nBody.value});closeNote();save()}
+function renderNotes(){document.getElementById('notes').innerHTML=data.notes.length?data.notes.map(n=>`<div class="note card"><div class="card-body"><div style="display:flex;justify-content:space-between"><h3>${esc(n.title)}</h3><button class="btn danger" onclick="delNote(${n.id})">Eliminar</button></div><p>${esc(n.body)}</p></div></div>`).join(''):'<div class="empty">No hay notas.</div>'}
+function delNote(id){if(confirm('¿Eliminar nota?')){data.notes=data.notes.filter(x=>x.id!==id);save()}}
+
+function exportData(){
+  let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='gestion-salud-respaldo.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function renderAll(){
+  fillBossSelects();
+  renderStats();
+  renderBossCards();
+  renderTimeline();
+  renderAlerts();
+  renderCalendar();
+  renderBossManage();
+  renderMeetings();
+  renderTasks();
+  renderFollow();
+  renderContacts();
+  renderNotes();
+}
+
 document.getElementById('dateLabel').textContent=new Date().toLocaleDateString('es-EC',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
 renderAll();
-initSharedData();
+firebaseInitPromise=initSharedData();
 setInterval(()=>renderBossCards(),60000);
 </script>
+</body>
+</html>
 </body>
 </html>
