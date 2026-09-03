@@ -85,7 +85,7 @@
 </div></div><div class="modal-foot"><button class="btn" onclick="closeActivity()">Cancelar</button><button class="btn primary" onclick="saveActivity()">Guardar actividad</button></div></div></div>
 
 <!-- Boss modal -->
-<div class="overlay" id="bossModal"><div class="modal"><div class="modal-head"><h2>Configurar gestión</h2><button class="btn" onclick="closeBoss()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre de la Gestión</label><input id="bName"></div><div class="field full"><label>Responsable / Cargo</label><input id="bRole"></div><div class="field full"><label>Estado actual</label><select id="bStatus"><option value="green">Disponible</option><option value="yellow">Ocupado</option><option value="red">En reunión</option><option value="blue">Fuera de oficina</option><option value="gray">No disponible</option></select></div></div></div><div class="modal-foot"><button class="btn" onclick="closeBoss()">Cancelar</button><button class="btn primary" onclick="saveBoss()">Guardar</button></div></div></div>
+<div class="overlay" id="bossModal"><div class="modal"><div class="modal-head"><h2>Configurar gestión</h2><button class="btn" onclick="closeBoss()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre de la Gestión</label><input id="bName"></div><div class="field full"><label>Responsable / Cargo</label><input id="bRole"></div><div class="field full"><label>Estado actual</label><select id="bStatus"><option value="green">Disponible</option><option value="yellow">Ocupado</option><option value="red"></option><option value="blue">Fuera de oficina</option><option value="gray">No disponible</option></select></div></div></div><div class="modal-foot"><button class="btn" onclick="closeBoss()">Cancelar</button><button class="btn primary" onclick="saveBoss()">Guardar</button></div></div></div>
 
 <div class="overlay" id="contactModal"><div class="modal"><div class="modal-head"><h2>Nuevo contacto</h2><button class="btn" onclick="closeContact()">✕</button></div><div class="modal-body"><div class="form"><div class="field full"><label>Nombre</label><input id="cName"></div><div class="field"><label>Cargo / institución</label><input id="cRole"></div><div class="field"><label>Teléfono</label><input id="cPhone"></div><div class="field"><label>Correo</label><input id="cEmail"></div><div class="field full"><label>Notas</label><input id="cNotes"></div></div></div><div class="modal-foot"><button class="btn" onclick="closeContact()">Cancelar</button><button class="btn primary" onclick="saveContact()">Guardar</button></div></div></div>
 
@@ -128,7 +128,7 @@ let data=JSON.parse(localStorage.getItem(KEY)||'null')||{
 };
 
 let selectedDate=today(),calDate=new Date(),editId=null,selectedBosses=[1],editBossId=null;
-const statusText={green:'Disponible',yellow:'Ocupado',red:'En reunión',blue:'Fuera de oficina',gray:'No disponible'};
+const statusText={green:'Disponible',yellow:'Ocupado',red:'Ocupado',blue:'Fuera de oficina',gray:'No disponible'};
 
 function save(){
   localStorage.setItem(KEY,JSON.stringify(data));
@@ -275,7 +275,7 @@ function getAutoStatus(bossId){
   const now=new Date(),ds=now.toISOString().slice(0,10),hm=now.toTimeString().slice(0,5);
   const active=data.activities.filter(a=>a.bosses.includes(bossId)&&a.date===ds&&a.time&&a.end&&a.status!=='Completada'&&a.time<=hm&&hm<a.end);
   if(!active.length)return {class:'green',text:'Disponible'};
-  if(active.some(a=>a.type==='Reunión'))return {class:'red',text:'En reunión'};
+  if(active.some(a=>a.type==='Reunión'))return {class:'red',text:'Ocupado'};
   return {class:'yellow',text:'Ocupado'};
 }
 
